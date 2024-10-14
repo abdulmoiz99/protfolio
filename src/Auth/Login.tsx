@@ -1,42 +1,71 @@
+import { Divider, Layout, Card, Button, Input } from 'antd';
+import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone, KeyOutlined, GoogleOutlined, GithubOutlined } from '@ant-design/icons';
+
+const { Header, Footer, Content } = Layout;
+
+const headerStyle: React.CSSProperties = {
+  textAlign: 'center',
+  padding: '16px 0',
+  color: '#fff',
+  fontSize: '20px',
+};
+
+const contentStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  minHeight: '80vh',
+  backgroundColor: '#f0f2f5',
+};
+
+const cardStyle: React.CSSProperties = {
+  width: 350,
+  textAlign: 'center',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+  borderRadius: '8px',
+};
+
+const footerStyle: React.CSSProperties = {
+  textAlign: 'center',
+  backgroundColor: '#001529',
+  color: '#fff',
+  padding: '12px 0',
+};
+
 export default function Login() {
   return (
-    <>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-          <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-            Add a new product
-          </h2>
-          <form action="#">
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Product Name
-                </label>
-                <input type="text" name="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"/>
-                <input type="text" name="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name"/>
-              </div>
-              <div className="w-full">
-                <label
-                  htmlFor="brand"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Brand
-                </label>
-                {/* <input type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product brand" required=""> */}
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
-            >
-              Add product
-            </button>
-          </form>
-        </div>
-      </section>
-    </>
+    <Layout>
+      <Header style={headerStyle}>Welcome to My App</Header>
+      <Content style={contentStyle}>
+        <Card title="Sign In" bordered={false} style={cardStyle}>
+          <Input size="large" placeholder="Username" prefix={<UserOutlined />} />
+          <br />
+          <br />
+          <Input.Password
+            prefix={<KeyOutlined />}
+            size="large"
+            placeholder="Password"
+            iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+          />
+          <br />
+          <br />
+          <Button type="primary" block>
+            Login
+          </Button>
+          <Divider plain>or</Divider>
+          <Button block>
+            <GoogleOutlined />
+            Sign In With Google
+          </Button>
+          <br />
+          <br />
+          <Button block>
+            <GithubOutlined />
+            Sign In With Github
+          </Button>
+        </Card>
+      </Content>
+      <Footer style={footerStyle}>© 2024 My App. All rights reserved.</Footer>
+    </Layout>
   );
 }
